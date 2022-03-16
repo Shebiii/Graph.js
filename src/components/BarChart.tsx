@@ -50,6 +50,7 @@ const data = {
       label: "Launched Product in last 3 months",
       data:props?.latestLaunchedProducts?.map((item:any)=>item.COUNT),
       backgroundColor: '#61DAFB',
+      barThickness:50
     }
   ],
   
