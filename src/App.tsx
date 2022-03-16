@@ -1,19 +1,19 @@
 import logo from "./logo.svg";
 import "./App.css";
-import BarChart from "./components/BarChart";
-import { HorizontalBar } from "./components/HorizontalBar";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Bar from "./Pages/Bar";
 function App() {
 
   return (
-    <div className="App">
-    <div className="App-header">
-      <img src={logo} className="App-logo" alt="logo" />
-      <h2>Welcome to Charts</h2>
-    </div>
-    <div className="size"><BarChart/></div>
-    <div className="size"><HorizontalBar/></div>
-    
-    </div>
+     <BrowserRouter>
+      <Routes>
+        <Route path="/" element={ <Home/>}/>
+        <Route path="/Bar" element={ <Bar/>}/>
+      </Routes>
+    </BrowserRouter>
+
   );
 }
 

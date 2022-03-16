@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,71 +7,192 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+import { useEffect, useState } from 'react';
+import { Button, Dropdown } from 'react-bootstrap';
 import { Bar } from 'react-chartjs-2';
 
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
-);
 
-export const options = {
-  indexAxis: 'y' as const,
-  elements: {
-    bar: {
-      borderWidth: 2,
-    },
-  },
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'right' as const,
-    },
-    title: {
-      display: true,
-      text: 'Horizontal Bar Chart',
-    },
-  },
-};
 
-const tempData=[
+export function HorizontalBar() {
+  const dummy=[
     {
-      "date": "15/12/2021",
+      "label": "15/12/2021",
       "products": 34
     },
     {
-      "date": "16/12/2021",
+      "label": "16/12/2021",
       "products": 35
-    },
-    {
-      "date": "17/12/2021",
-      "products": 36
-    },
-    {
-      "date": "18/12/2021",
-      "products": 37
-    },
-    {
-      "date": "19/12/2021",
-      "products": 38
     }
    ]
-export const data = {
-    labels:tempData.map((item)=>item.date),
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: tempData.map((item)=>item.products),
-      borderColor: '#61DAFB',
-      backgroundColor: '#61DAFB',
-    }
-  ],
-};
+   const [tempData,setTempData]=useState<any>(dummy);
+   const [selectedOption,setselectedOption]=useState<string>("Product type");
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+  );
+  
+  const options = {
+    indexAxis: 'y' as const,
+    elements: {
+      bar: {
+        borderWidth: 2,
+      },
+    },
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'bottom' as const,
+      },
+      title: {
+        display: true,
+        text: `Horizontal Bar Chart`,
+      },
+    },
+  };
+  
 
-export function HorizontalBar() {
-  return <Bar options={options} data={data} />;
+
+    const data = {
+      labels:tempData.map((item:any)=>item.label),
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data: tempData.map((item:any)=>item.products),
+        borderColor: '#61DAFB',
+        backgroundColor: '#61DAFB',
+      }
+    ],
+  };
+  const clickHandler=(e:any)=>{
+    setselectedOption(e)
+    setTempData([
+      {
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },{
+        "label": "shoaib",
+        "products": 2
+      },
+      {
+        "label": "mohsin",
+        "products": 4
+      },
+     ])
+   
+  }
+  useEffect(()=>{
+
+  },[tempData])
+  return <>
+  <Dropdown className="pt-5">
+  <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
+    {selectedOption}
+  </Dropdown.Toggle>
+
+  <Dropdown.Menu>
+    <Dropdown.Item onClick={()=>clickHandler('By Product Type')}>By Product Type</Dropdown.Item>
+    <Dropdown.Item onClick={()=>clickHandler('By Date')}>By Date</Dropdown.Item>
+  </Dropdown.Menu>
+</Dropdown>
+  <Bar options={options} data={data} /></>;
 }

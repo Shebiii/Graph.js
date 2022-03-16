@@ -24,7 +24,7 @@ export const options = {
   responsive: true,
   plugins: {
     legend: {
-      position: 'top' as const,
+      position: 'bottom' as const,
     },
     title: {
       display: true,
@@ -59,13 +59,14 @@ export const data = {
   labels:tempData.map((item)=>item.date),
   datasets: [
     {
-      label: 'Dataset 1',
+      label: 'By date',
       data: tempData.map((item)=>item.products),
       backgroundColor: '#61DAFB',
     }
   ],
+  
 };
 
 export default function BarChart() {
-  return <Bar options={options} data={data} />;
+  return <Bar options={options} data={data} className="mt-5 pt-5"/>;
 }
