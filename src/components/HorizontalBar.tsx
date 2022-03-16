@@ -6,22 +6,15 @@ import {
   Title,
   Tooltip,
   Legend,
-} from "chart.js";
-import { useEffect, useState } from "react";
-import { Bar } from "react-chartjs-2";
+} from 'chart.js'
+import { useEffect, useState } from 'react'
+import { Bar } from 'react-chartjs-2'
 
 export function HorizontalBar(props: any) {
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-  );
+  ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
   const options = {
-    indexAxis: "y" as const,
+    indexAxis: 'y' as const,
     elements: {
       bar: {
         borderWidth: 2,
@@ -30,35 +23,32 @@ export function HorizontalBar(props: any) {
     responsive: true,
     plugins: {
       legend: {
-        position: "bottom" as const,
+        display: false,
+        position: 'bottom' as const,
       },
       title: {
-        display: true,
+        display: false,
         text: `Horizontal Bar Chart`,
       },
     },
-  };
+  }
 
   const data = {
     labels:
-      props?.selectedOption === "Product type"
+      props?.selectedOption === 'Product type'
         ? props?.productTypeData?.map((item: any) => item.TYPE)
         : props?.dateTypeData?.map((item: any) => item.DATE),
     datasets: [
       {
-        label:
-          props?.selectedOption === "Product type"
-            ? "PRODUCT TYPE"
-            : "DATE TYPE",
+        label: "count",
         data:
-          props?.selectedOption === "Product type"
+          props?.selectedOption === 'Product type'
             ? props?.productTypeData?.map((item: any) => item.COUNT)
             : props?.dateTypeData?.map((item: any) => item.COUNT),
-        borderColor: "#61DAFB",
-        backgroundColor: "#61DAFB",
-        
+        borderColor: '#61DAFB',
+        backgroundColor: '#61DAFB',
       },
     ],
-  };
-  return <Bar options={options} data={data} />;
+  }
+  return <Bar options={options} data={data} />
 }

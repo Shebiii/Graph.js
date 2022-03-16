@@ -9,9 +9,50 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 65px;
   padding: 20px;
   color: white;
+  text-align: left;
+}
+
+.chartHeading{
+  text-align: left !important;
+  padding-bottom: 2rem;
+}
+
+.paperContainer {
+  height: 40rem;
+  width: 50rem;
+  position: absolute;
+  left: 28vw;
+  top: 15vh;
+  border-radius: 50px;
+}
+
+.dropdownContainer {
+  height: 5rem;
+  margin-top: 3rem;
+  background: red;
+}
+
+.chartContainer {
+  padding: 2rem;
+  margin-top: 2rem;
+  border: 0px !important;
+}
+
+.dropdownBox {
+  display: flex;
+}
+.dropdownLabel {
+  margin-left: 3rem !important;
+  margin-right: 3rem !important;
+}
+.startButton {
+  width: 20rem;
+  height: 4rem;
+  border-radius: 50px !important;
+  margin-top: 15rem !important;
 }
 
 .App-intro {
