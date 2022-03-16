@@ -35,13 +35,20 @@ const options = {
     },
   },
 };
+const toMonth=(date:any)=>{
+  const month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+const d = new Date(date);
+let name = month[d.getMonth()];
+return name
+}
 
 const data = {
-  labels: props?.selectedOption==="Product type"?props?.productTypeData?.map((item:any)=>item.TYPE):props?.dateTypeData?.map((item:any)=>item.DATE),
+  labels: props?.latestLaunchedProducts?.map((item:any)=>toMonth(item.DATE)),
   datasets: [
     {
-      label: props?.selectedOption==="Product type"?"PRODUCT TYPE":"DATE TYPE",
-      data: props?.selectedOption==="Product type"?props?.productTypeData?.map((item:any)=>item.COUNT):props?.dateTypeData?.map((item:any)=>item.COUNT),
+      label: "Launched Product in last 3 months",
+      data:props?.latestLaunchedProducts?.map((item:any)=>item.COUNT),
       backgroundColor: '#61DAFB',
     }
   ],
