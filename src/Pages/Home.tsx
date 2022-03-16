@@ -1,4 +1,5 @@
 
+import axios from 'axios';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from "react-router-dom";
@@ -10,7 +11,14 @@ function Home() {
   const navigate = useNavigate();
     const clickHandler=()=>{
       setLoading(true)
-      // navigate("/bar")
+      axios.get("http://localhost:8080/getAllProducts").then(()=>{
+        setLoading(false)
+        console.log("success")
+        navigate("/bar")
+      }).catch((err)=>{
+        alert("failed to load files")
+        setLoading(false)
+      })
     }
   return (<>
     {loading?

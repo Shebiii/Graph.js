@@ -11,6 +11,9 @@ import {
 import { Bar } from 'react-chartjs-2';
 
 
+
+export default function BarChart(props: any) {
+  
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -20,7 +23,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+const options = {
   responsive: true,
   plugins: {
     legend: {
@@ -33,40 +36,16 @@ export const options = {
   },
 };
 
-const tempData=[
-  {
-    "date": "15/12/2021",
-    "products": 34
-  },
-  {
-    "date": "16/12/2021",
-    "products": 35
-  },
-  {
-    "date": "17/12/2021",
-    "products": 36
-  },
-  {
-    "date": "18/12/2021",
-    "products": 37
-  },
-  {
-    "date": "19/12/2021",
-    "products": 38
-  }
- ]
-export const data = {
-  labels:tempData.map((item)=>item.date),
+const data = {
+  labels: props?.selectedOption==="Product type"?props?.productTypeData?.map((item:any)=>item.TYPE):props?.dateTypeData?.map((item:any)=>item.DATE),
   datasets: [
     {
-      label: 'By date',
-      data: tempData.map((item)=>item.products),
+      label: props?.selectedOption==="Product type"?"PRODUCT TYPE":"DATE TYPE",
+      data: props?.selectedOption==="Product type"?props?.productTypeData?.map((item:any)=>item.COUNT):props?.dateTypeData?.map((item:any)=>item.COUNT),
       backgroundColor: '#61DAFB',
     }
   ],
   
 };
-
-export default function BarChart() {
   return <Bar options={options} data={data} className="mt-5 pt-5"/>;
 }

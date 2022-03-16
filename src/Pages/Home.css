@@ -5,9 +5,8 @@
 }
 
 .size {
-  width: 50%;
-  height: 10%;
-  float: left;
+  width: 100%;
+  /* height: 200vh; */
 }
 .loader {
   width: 100%;
